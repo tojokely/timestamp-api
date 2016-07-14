@@ -35,6 +35,6 @@ app.get('/',function(req,res){
     });
 });
 
-app.listen(port, function(){
-    console.log('Example app listening on port 8080!');
+app.listen(process.env.PORT || port, function(){
+    console.log('Ts-app listening ' );
 });
