@@ -1,6 +1,7 @@
 var express = require('express');
 var moment = require('moment');
 var path = require('path');
+var fs = require('fs');
 
 var app = express();
 var port = 8080;
@@ -28,7 +29,10 @@ app.get('/:timeStamp', function(req,res){
 });
 
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/index.html'));
+    fs.readFile(__dirname + '/index.html', 'utf8', function(err, text){
+        if (err) throw err;
+        res.send(text);
+    });
 });
 
 app.listen(port, function(){
